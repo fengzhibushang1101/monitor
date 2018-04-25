@@ -32,12 +32,15 @@ CELERYD_PREFETCH_MULTIPLIER = 2
 CELERY_QUEUES = (
     Queue('default_queue', Exchange('default_queue'), routing_key='default_queue'),
     Queue('send_mail', Exchange('mail'), routing_key='send.mail', exchange_type="direct"),
+    Queue('get_usage', Exchange('monitor'), routing_key='monitor', exchange_type="direct"),
 
 )
 
 CELERY_ROUTES = (
     # 发送邮件的队列
     {"task.mail.send_mail": {"routing_key": "send.mail", "queue": "send_mail"}},
+    # 监控机器队列
+    {"task.get_usage.get_usage": {"routing_key": "monitor", "queue": "get_usage"}},
 
 )
 #
@@ -47,6 +50,7 @@ CELERY_ROUTES = (
 #
 CELERY_IMPORTS = (
     "task.mail",
+    "task.get_usage"
 )
 
 CELERY_SEND_TASK_ERROR_EMAILS = False
