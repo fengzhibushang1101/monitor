@@ -17,3 +17,6 @@ yarn-error.log*
 *.gif.ass
 
 **/gif/*.gif
+
+
+.monitor_list.yaml
