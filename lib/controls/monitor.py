@@ -80,11 +80,11 @@ class MonitorControl(object):
                 mysql_cpu = self.exec_command(ssh, "top -b -n 1 | grep mysqld | awk '{b+=$9}END{print b}'")
                 mongo_cpu = self.exec_command(ssh, "top -b -n 1 | grep mongod | awk '{b+=$9}END{print b}'")
                 UsageRecord.create(self.session, **{
-                    "cpu_usage": 1 - float(cpu_reset) / 100,
+                    "cpu_usage": 1 - float(cpu_reset.strip().strip("%")) / 100,
                     "server_load": server_load,
                     "memory_usage": 1 - float(float(memory_rest) / record.memory_capacity),
                     "disk_usage": float(float(disk_usage) / record.disk_capacity),
-                    "mysql_cpu": float(mysql_cpu),
+                    "mysql_cpu": float(mysql_cpu or 0),
                     "mongo_cpu": float(mongo_cpu or 0),
                     "robot_id": record.id
                 })
