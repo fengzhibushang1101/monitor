@@ -16,16 +16,8 @@ from tornado import ioloop, web, options, httpserver
 from config import settings
 from lib.utils.logger_utils import logger
 from views.api import ApiHandler
-from views.chat import ChatHandler
-from views.es import EsHandler
-from views.gif import GifHandler
-from views.index import IndexHandler
-from views.log import LoginHandler
-from views.project import ProjectHandler
-from views.register import RegisterHandler
-from views.sign import SignHandler
 from views.webhook import WebHookHandler
-from views.ws import WsHandler
+
 
 options.define('port', default=8080, type=int)
 
@@ -52,17 +44,7 @@ session_settings = dict(
     )
 )
 urls = [
-    (r'/(index)?', IndexHandler),
-    (r'/log(in|out)', LoginHandler),
-    (r'/sign(in|up)', SignHandler),
-    (r'/register', RegisterHandler),
-    (r'/webhook', WebHookHandler),
-    (r'/project/([\w/\.]+)', ProjectHandler),
     (r'/api/([\w/\.]+)', ApiHandler),
-    (r'/es', EsHandler),
-    (r'/ws', WsHandler),
-    (r'/chat((/?)|(/([\w/\.]+)))?', ChatHandler),
-    (r'/gif/([\w/\.]+)', GifHandler)
 ]
 
 
@@ -78,13 +60,6 @@ def main():
         print "the server is going to start..."
         print "http://localhost:%s/" % options.options.port
         ioloop.IOLoop().instance().start()
-
-        # app = tornado.wsgi.WSGIApplication(
-        #     handlers=urls, debug=True,
-        #     **SETTINGS
-        # )
-        # server = gevent.wsgi.WSGIServer(('', settings.port), app)
-        # server.serve_forever()
     except Exception, e:
         print traceback.format_exc(e)
         logger.error(traceback.format_exc(e))
