@@ -67,6 +67,7 @@ class ApiHandler(BaseHandler):
             robots = Monitor.get_all_using_robot(session)
             for robot in robots:
                 get_usage.delay(robot.public_ip)
+        return {"status": 1, "message": "已经加入任务队列" }
 
 
 if __name__ == "__main__":
@@ -75,6 +76,8 @@ if __name__ == "__main__":
             robots = Monitor.get_all_using_robot(session)
             for robot in robots:
                 get_usage.delay(robot.public_ip)
-
-
-    get_all_current_monitor()
+    #
+    #
+    # get_all_current_monitor()
+    # import requests
+    # requests.post("http://monitor.kisu.top/api/all_monitor")

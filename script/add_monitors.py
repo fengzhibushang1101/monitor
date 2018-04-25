@@ -6,6 +6,12 @@
  @Software: PyCharm
  @Description: 
 """
+import os
+
+import sys
+
+os.environ["PROCESS_ENV"] = "production"
+sys.path.append("/home/odin/src/monitor")
 
 import yaml
 
@@ -19,5 +25,8 @@ with sessionCM() as session:
     for public_ip, data in monitor_list.iteritems():
         mc = MonitorControl(public_ip, session)
         if not mc.get_record():
-            mc.add_to_record(data["user_name"], data["password"], data["name"], data["area"], tags=data["group"],
-                             service=data.get("service", ""), description=data.get("description", ""))
+            try:
+                mc.add_to_record(data["user_name"], data["password"], data["name"], data["area"], tags=data["group"],
+                                 service=data.get("service", ""), description=data.get("description", ""))
+            except Exception, e:
+                pass
