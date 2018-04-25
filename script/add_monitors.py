@@ -18,6 +18,6 @@ with open("../monitor_list.yaml") as f:
 with sessionCM() as session:
     for public_ip, data in monitor_list.iteritems():
         mc = MonitorControl(public_ip, session)
-        if not mc.is_in_record():
+        if not mc.get_record():
             mc.add_to_record(data["user_name"], data["password"], data["name"], data["area"], tags=data["group"],
                              service=data.get("service", ""), description=data.get("description", ""))

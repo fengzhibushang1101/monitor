@@ -14,7 +14,10 @@ from tornado import gen
 from tornado.concurrent import run_on_executor
 from tornado.web import HTTPError
 
+from lib.sql.monitor import Monitor
+from lib.sql.session import sessionCM
 from lib.utils.logger_utils import logger
+from task.get_usage import get_usage
 from task.mail import send_to_master
 from views.base import BaseHandler
 
@@ -47,6 +50,7 @@ class ApiHandler(BaseHandler):
         try:
             interface = args[0]
             method_settings = {
+                "all_monitor": self.get_all_current_monitor
             }
             response = yield method_settings[interface]()
             self.write(response)
@@ -56,3 +60,21 @@ class ApiHandler(BaseHandler):
             logger.error(logger_dict)
             send_to_master("API出错", json.dumps(logger_dict))
             self.write({"status": 0, "message": "获取失败"})
+
+    @run_on_executor
+    def get_all_current_monitor(self):
+        with sessionCM() as session:
+            robots = Monitor.get_all_using_robot(session)
+            for robot in robots:
+                get_usage(robot.public_ip)
+
+
+if __name__ == "__main__":
+    def get_all_current_monitor():
+        with sessionCM() as session:
+            robots = Monitor.get_all_using_robot(session)
+            for robot in robots:
+                get_usage(robot.public_ip)
+
+
+    get_all_current_monitor()

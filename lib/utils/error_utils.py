@@ -23,7 +23,12 @@ class ErrorArgumentError(Exception):
 class RedisError(Exception):
     msg = "there is something wrong about redis"
 
+
 class StdError(Exception):
+    pass
+
+
+class OverloadError(Exception):
     pass
 
 __all__ = [

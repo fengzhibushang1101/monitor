@@ -9,13 +9,7 @@
 from lib.sql.base import Base
 import sqlalchemy as SA
 
-STATUS = dict(
-    ACTIVE=1,
-    CONNECT_ERROR=2,
-    AUTH_ERROR=3,
-    OTHER_ERROR=4,
-    STOPPED=5
-)
+
 
 LINE = dict(
     mongo=300,
@@ -31,16 +25,14 @@ class UsageRecord(Base):
     )
 
     id = SA.Column(SA.BIGINT(), primary_key=True, autoincrement=True)
-    status = SA.Column(SA.INTEGER, default=False)
     cpu_usage = SA.Column(SA.FLOAT)
     server_load = SA.Column(SA.FLOAT)
-    memory_usage = SA.Column(SA.INTEGER)
-    disk_usage = SA.Column(SA.INTEGER)
+    memory_usage = SA.Column(SA.FLOAT)
+    disk_usage = SA.Column(SA.FLOAT)
     mysql_cpu = SA.Column(SA.FLOAT)
     mongo_cpu = SA.Column(SA.FLOAT)
     other_service_status = SA.Column(SA.String(512))
     robot_id = SA.Column(SA.INTEGER, nullable=False)
-    error_times = SA.Column(SA.INTEGER)
     #网络情况
 
 
