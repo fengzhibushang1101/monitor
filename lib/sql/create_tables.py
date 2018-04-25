@@ -9,8 +9,8 @@
 
 from lib.sql.base import metadata, db
 from lib.sql.user import User
-from lib.sql.gif_list import GifList
-from lib.sql.jx3_daily_record import Jx3DailyRecord
+from lib.sql.monitor import Monitor
+from lib.sql.usage_record import UsageRecord
 
 
 class CreateTables(object):

@@ -10,7 +10,7 @@
 
 import os
 LOG_PATH = 'd://logs/'
-LOG_FILE = os.path.sep.join([LOG_PATH, 'myweb.log'])
+LOG_FILE = os.path.sep.join([LOG_PATH, 'globalhawk.log'])
 
 
 
@@ -19,13 +19,13 @@ ECHO_SQL = False
 
 DB = {
     "user": "myweb",
-    "password": "!w251192185",
-    "host": "127.0.0.1",
+    "password": "MyNewPass4!",
+    "host": "180.76.98.136",
     "db_name": "myweb",
 }
 
 # redis configure
-REDIS_HOST = "127.0.0.1"
+REDIS_HOST = "180.76.98.136"
 REDIS_PORT = 6379
 REDIS_DB = 0
 REDIS_PASSWORD = ""
