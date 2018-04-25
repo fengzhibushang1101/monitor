@@ -1,9 +1,87 @@
 
-
-#机器列表
-
+#国内机器列表
 120.24.7.164:
+  name: 164
+  group: actneed
+  user_name: kratos
+  password: 2NvGXxtKpOdT4OugZ5erM0zhk6RsRhmz
+  area: CN
+
+120.24.5.154:
+  name: 154
+  group: actneed
+  user_name: kratos
+  password: 2NvGXxtKpOdT4OugZ5erM0zhk6RsRhmz
+  area: CN
+
+120.24.36.230:
+  name: 154
+  group: actneed
+  user_name: kratos
+  password: 2NvGXxtKpOdT4OugZ5erM0zhk6RsRhmz
+  area: CN
+
+120.24.7.193:
+  name: 193
+  group: actneed
+  user_name: kratos
+  password: 2NvGXxtKpOdT4OugZ5erM0zhk6RsRhmz
+  area: CN
+
+
+#香港机器列表
+47.89.54.63:
+  name: 63
+  group: actneed|celery
+  user_name: kratos
+  password: 2NvGXxtKpOdT4OugZ5erM0zhk6RsRhmz
+  area: HK
+
+47.89.27.139:
+  name: 139
+  group: actneed|celery
+  user_name: kratos
+  password: 2NvGXxtKpOdT4OugZ5erM0zhk6RsRhmz
+  area: HK
+
+47.91.207.132:
+  name: 132
+  group: actneed|celery
+  user_name: kratos
+  password: 2NvGXxtKpOdT4OugZ5erM0zhk6RsRhmz
+  area: HK
+
+#自用机器列表
+
+180.76.98.136:
+  name: 136
+  group: self
+  user_name: root
+  password: '#w251192185'
+  area: CN
+
+132.148.88.255:
+  name: 255
+  group: self
+  user_name: tongtian
+  password: "Ww#251192185"
+  area: US
+  description: "the robot of godaddy"
+
+47.89.250.211:
+  name: 211
+  group: self
+  user_name: root
+  password: 'Ww251192185'
+  area: US
+
+47.254.16.204:
   name: 204
   group: self
-  password:
-  user_name:
+  user_name: odin
+  password: "Ww#251192185"
+  area: US
+
+
+
+

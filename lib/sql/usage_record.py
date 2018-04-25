@@ -31,17 +31,17 @@ class UsageRecord(Base):
     )
 
     id = SA.Column(SA.BIGINT(), primary_key=True, autoincrement=True)
-    online = SA.Column(SA.Boolean(), default=False)
-    status = SA.Column(SA.Boolean(), default=False)
-    cpu_usage = SA.Column(SA.String(32))
-    memory_usage = SA.Column(SA.String(32))
-    disk_usage = SA.Column(SA.String(32))
+    status = SA.Column(SA.INTEGER, default=False)
+    cpu_usage = SA.Column(SA.FLOAT)
+    server_load = SA.Column(SA.FLOAT)
+    memory_usage = SA.Column(SA.INTEGER)
+    disk_usage = SA.Column(SA.INTEGER)
     mysql_cpu = SA.Column(SA.FLOAT)
     mongo_cpu = SA.Column(SA.FLOAT)
-    other_service_status = SA.Column(SA.String(128))
-    service = SA.Column(SA.Text())
+    other_service_status = SA.Column(SA.String(512))
     robot_id = SA.Column(SA.INTEGER, nullable=False)
-    error_times = SA.Column
+    error_times = SA.Column(SA.INTEGER)
+    #网络情况
 
 
 
